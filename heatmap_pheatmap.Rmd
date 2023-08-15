@@ -1,0 +1,35 @@
+Simplest heatmap for expression data .
+
+```{r}
+gene_names <- c("sag", "fac", "GeneC", "GeneD")
+
+sample_names <- c("sic", "si infected", "Sm control", "sm infected")
+```
+
+expression_data \<- matrix(data = c( 5.2, 3.8, 6.7, 8.1, 2.3, 4.5, 7.2, 6.8,9.0, 5.6, 3.4, 2.1,6.7, 8.9, 7.1, 5.4),nrow = length(gene_names),ncol = length(sample_names),dimnames = list(gene_names, sample_names))
+
+```{r}
+expression_data <- matrix(data = c( 5.2, 3.8, 6.7, 8.1, 2.3, 4.5, 7.2, 6.8,9.0, 5.6, 3.4, 2.1,6.7, 8.9, 7.1, 5.4),nrow = length(gene_names),ncol = length(sample_names),dimnames = list(gene_names, sample_names))
+```
+
+plot the graph
+
+```{r message=TRUE, warning=TRUE, paged.print=TRUE}
+ordered_sample <- c("sic", "si infected", "Sm control", "sm infected")
+colnames(expression_data) <- ordered_sample
+ordered_gene <- c("sag", "fac", "GeneC", "GeneD")
+rownames(expression_data) <- ordered_gene
+
+
+
+```
+
+```{r}
+pheatmap(expression_data)
+```
+
+The gene_name are not in proper order, even if we have applied the code for the respected error. As we don't hierarchical clustering ,i will remove this by giving argumentt pheatmap .then after the problem will be solved.
+
+```{r}
+pheatmap(expression_data,cluster_rows = FALSE,cluster_cols=FALSE)
+```
